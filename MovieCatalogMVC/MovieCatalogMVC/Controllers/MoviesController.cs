@@ -11,10 +11,10 @@ namespace MovieCatalogMVC.Controllers
         private MovieContext db = new MovieContext();
 
         // GET: Movies
-        public ActionResult Index()
-        {
-            return View(db.Movies.ToList());
-        }
+        //public ActionResult Index()
+        //{
+        //    return View(db.Movies.ToList());
+        //}
 
         // GET: Movies/Details/5
         public ActionResult Details(int? id)
@@ -110,6 +110,23 @@ namespace MovieCatalogMVC.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Index(string searchString)
+        {
+            var movies = from m in db.Movies
+                         select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Name.Contains(searchString));
+            }
+
+            return View(movies);
+        }
+
+
+
+
 
         protected override void Dispose(bool disposing)
         {
