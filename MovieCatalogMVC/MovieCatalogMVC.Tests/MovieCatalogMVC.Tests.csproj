@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1B64D493-49A1-4059-B525-D4B8416A59FD}</ProjectGuid>
+    <ProjectGuid>{E282C392-89A4-4506-BF64-065F7FFB2C21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MovieCatalogMVC.Tests</RootNamespace>
@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MovieCatalogMVC\MovieCatalogMVC.csproj">
-      <Project>{F0E498C4-BF83-4E10-9F44-6574FCE4504A}</Project>
+      <Project>{D9C9F42A-BA65-470B-B071-2E356F9AD1FD}</Project>
       <Name>MovieCatalogMVC</Name>
     </ProjectReference>
   </ItemGroup>
