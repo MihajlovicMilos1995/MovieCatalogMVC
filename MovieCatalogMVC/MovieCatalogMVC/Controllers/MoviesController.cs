@@ -116,7 +116,7 @@ namespace MovieCatalogMVC.Controllers
             var movies = from m in db.Movies
                          select m;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Name.Contains(searchString));
             }
