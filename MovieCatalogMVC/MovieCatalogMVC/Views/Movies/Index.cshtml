@@ -4,9 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-
+<h2>Movies</h2>
 
     @Html.ActionLink("Create New", "Create")
    <p></p>
@@ -25,16 +23,20 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+            @*@Html.DisplayNameFor(model => model.Genre)*@
+            @Html.ActionLink("Genre" , "Index" , new { sortOrder = ViewBag.GenreSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Director)
+             @*@Html.DisplayNameFor(model => model.Director?*@
+             @Html.ActionLink("Director" , "Index" , new { sortOrder = ViewBag.DirectorSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @*@Html.DisplayNameFor(model => model.ReleaseDate)*@
+            @Html.ActionLink("Release Date", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
         <th></th>
     </tr>
