@@ -14,6 +14,7 @@ namespace MovieCatalogMVC.Models
         public string Director { get; set; }
 
         [DataType(DataType.Date)]
+        [ValidateDateRange]
         public DateTime ReleaseDate { get; set; }
     }
 }
