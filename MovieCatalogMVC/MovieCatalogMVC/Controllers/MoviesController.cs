@@ -129,8 +129,17 @@ namespace MovieCatalogMVC.Controllers
         }
 
 
+        //public ActionResult Search(string searchString)
+        //{
+        //    var movies = from m in db.Movies
+        //                 select m;
 
-
+        //    if (!String.IsNullOrEmpty(searchString))
+        //    {
+        //        movies = movies.Where(s => s.Name.Contains(searchString));
+        //    }
+        //    return PartialView(movies);
+        //}
 
         protected override void Dispose(bool disposing)
         {

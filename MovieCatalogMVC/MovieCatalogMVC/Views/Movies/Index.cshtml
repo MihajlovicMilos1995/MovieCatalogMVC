@@ -6,10 +6,21 @@
 
 <h2>Index</h2>
 
+<form method="get" action="@Url.Action("Index")" data-ajax-update="#Movies"
+    data-otf-ajax="true" data-otf-target="#Movies">
+    <p>
+        Title: @Html.TextBox("SearchString") <br />
+    </p>
+
+    <p>
+        <input type="submit" value="Search" />
+    </p>
+
+</form>
+
 
 
     @Html.ActionLink("Create New", "Create")
-   <p></p>
 @using (Html.BeginForm())
 {
     <p>
@@ -17,12 +28,11 @@
     </p>
 
     <p>
-        <input type="submit" value="Filter" />
+        <input type="submit" value="Search" />
     </p>
 }
-</p>
 
-<table class="table">
+<table class="table" id="Movies">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)

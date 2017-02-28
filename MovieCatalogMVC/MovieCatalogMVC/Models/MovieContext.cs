@@ -11,7 +11,6 @@ namespace MovieCatalogMVC.Models
         public MovieContext() : base("MoviesDataBase")
         {
         }
-
         public DbSet<Movie> Movies { get; set; }
     }
 }

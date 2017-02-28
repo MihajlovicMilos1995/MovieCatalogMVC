@@ -1,0 +1,25 @@
+﻿@*@model IEnumerable<MovieCatalogMVC.Models.Movie>
+
+<table id="searchResults">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Address
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Details", "Movie", new { id = item.ID }, null)
+            </td>
+            <td>
+                @item.Name, @item.Genre
+            </td>
+        </tr>
+    }
+
+</table>*@
