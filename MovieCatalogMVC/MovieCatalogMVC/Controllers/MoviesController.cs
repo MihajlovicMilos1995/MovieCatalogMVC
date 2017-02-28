@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using MovieCatalogMVC.Models;
 
@@ -115,15 +111,53 @@ namespace MovieCatalogMVC.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, string sortOrder)
         {
             var movies = from m in db.Movies
                          select m;
 
-            if (!String.IsNullOrEmpty(searchString))
+            if (!string.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Name.Contains(searchString));
             }
+
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.GenreSortParm = sortOrder == "Genre" ? "GenreDesc" : "Genre";
+            ViewBag.DirectorSortParm = sortOrder == "Director" ? "DirectorDesc" : "Director";
+
+
+            var movie = from s in db.Movies
+            select s;
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    movies = movies.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                   movies = movies.OrderBy(s => s.ReleaseDate);
+                    break;
+                case "date_desc":
+                    movies = movies.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                case "Genre":
+                    movies = movies.OrderBy(s => s.Genre);
+                    break;
+                case "GenreDesc":
+                    movies = movies.OrderByDescending(s => s.Genre);
+                    break;
+                case "Director":
+                    movies = movies.OrderBy(s => s.Director);
+                    break;
+                case "DirectorDesc":
+                    movies = movies.OrderByDescending(s => s.Director);
+                    break;
+                default:
+                    movies = movies.OrderBy(s => s.Name);
+                    break;
+            }
+
 
             return View(movies);
         }
