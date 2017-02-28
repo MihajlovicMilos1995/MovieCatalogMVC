@@ -121,13 +121,13 @@ namespace MovieCatalogMVC.Controllers
                 movies = movies.Where(s => s.Name.Contains(searchString));
             }
 
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "GenreDesc" : "Genre";
             ViewBag.DirectorSortParm = sortOrder == "Director" ? "DirectorDesc" : "Director";
 
 
-            var students = from s in db.Movies
+            var movie = from s in db.Movies
             select s;
 
             switch (sortOrder)
