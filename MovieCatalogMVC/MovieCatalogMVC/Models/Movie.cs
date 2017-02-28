@@ -14,6 +14,7 @@ namespace MovieCatalogMVC.Models
         public string Director { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [ValidateDateRange]
         public DateTime ReleaseDate { get; set; }
     }
