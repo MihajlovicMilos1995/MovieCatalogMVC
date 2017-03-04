@@ -17,11 +17,19 @@
     </p>
 
 </form>
+@using (Ajax.BeginForm(
+    new AjaxOptions
+    {
+        HttpMethod = "get",
+        InsertionMode = InsertionMode.Replace,
+        UpdateTargetId = "Movies"
+    }))
+{
 
-
+}
 
     @Html.ActionLink("Create New", "Create")
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
     <p>
         Title: @Html.TextBox("SearchString") <br />
@@ -30,7 +38,7 @@
     <p>
         <input type="submit" value="Search" />
     </p>
-}
+}*@
 
 <table class="table" id="Movies">
     <tr>

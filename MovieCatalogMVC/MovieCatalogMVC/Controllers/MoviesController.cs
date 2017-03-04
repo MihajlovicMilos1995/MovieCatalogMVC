@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using MovieCatalogMVC.Models;
+using System;
 
 namespace MovieCatalogMVC.Controllers
 {
@@ -111,24 +112,38 @@ namespace MovieCatalogMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        //search #1
+
         public ActionResult Index(string searchString, string sortOrder)
         {
+            //var movies = from m in db.Movies
+            //             select m;
+
+            //if (!string.IsNullOrEmpty(searchString))
+            //{
+            //    movies = movies.Where(s => s.Name.Contains(searchString));
+            //}
+
+            //sort
+
             var movies = from m in db.Movies
                          select m;
 
-            if (!string.IsNullOrEmpty(searchString))
+            if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Name.Contains(searchString));
             }
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_MovieSearchResults", movies);
+            }
 
-            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+        ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "GenreDesc" : "Genre";
             ViewBag.DirectorSortParm = sortOrder == "Director" ? "DirectorDesc" : "Director";
 
-
-            var movie = from s in db.Movies
-            select s;
 
             switch (sortOrder)
             {
@@ -136,7 +151,7 @@ namespace MovieCatalogMVC.Controllers
                     movies = movies.OrderByDescending(s => s.Name);
                     break;
                 case "Date":
-                   movies = movies.OrderBy(s => s.ReleaseDate);
+                    movies = movies.OrderBy(s => s.ReleaseDate);
                     break;
                 case "date_desc":
                     movies = movies.OrderByDescending(s => s.ReleaseDate);
@@ -158,21 +173,13 @@ namespace MovieCatalogMVC.Controllers
                     break;
             }
 
-
             return View(movies);
         }
 
+        //search #2
 
         //public ActionResult Search(string searchString)
         //{
-        //    var movies = from m in db.Movies
-        //                 select m;
-
-        //    if (!String.IsNullOrEmpty(searchString))
-        //    {
-        //        movies = movies.Where(s => s.Name.Contains(searchString));
-        //    }
-        //    return PartialView(movies);
         //}
 
         protected override void Dispose(bool disposing)
