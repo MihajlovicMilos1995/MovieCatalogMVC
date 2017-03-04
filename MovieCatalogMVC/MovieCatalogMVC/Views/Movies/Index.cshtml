@@ -14,6 +14,7 @@
 
     <p>
         <input type="submit" value="Search" />
+        @Html.ActionLink("Reset", "Index", "Movies")
     </p>
 
 </form>
@@ -43,16 +44,20 @@
 <table class="table" id="Movies">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Genre)
+            @*@Html.DisplayNameFor(model => model.Genre)*@
+            @Html.ActionLink("Genre", "Index", new { sortOrder = ViewBag.GenreSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Director)
+            @*@Html.DisplayNameFor(model => model.Director)*@
+            @Html.ActionLink("Director", "Index", new { sortOrder = ViewBag.DirectorSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+            @*@Html.DisplayNameFor(model => model.ReleaseDate)*@
+            @Html.ActionLink("Release Date", "Index", new { sortOrder = ViewBag.DateSortParm })
         </th>
         <th></th>
     </tr>
