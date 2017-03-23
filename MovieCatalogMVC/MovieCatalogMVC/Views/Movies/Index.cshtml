@@ -6,7 +6,7 @@
 
 <h2>Index</h2>
 
-<form method="get" action="@Url.Action("Index")" data-ajax-update="#Movies"
+@*<form method="get" action="@Url.Action("Index")" data-ajax-update="#Movies"
     data-otf-ajax="true" data-otf-target="#Movies">
     <p>
         Title: @Html.TextBox("SearchString") <br />
@@ -17,16 +17,18 @@
         @Html.ActionLink("Reset", "Index", "Movies")
     </p>
 
-</form>
+</form>*@
 @using (Ajax.BeginForm(
-    new AjaxOptions
-    {
-        HttpMethod = "get",
-        InsertionMode = InsertionMode.Replace,
-        UpdateTargetId = "Movies"
-    }))
+                new AjaxOptions
+                {
+                    HttpMethod = "get",
+                    InsertionMode = InsertionMode.Replace,
+                    UpdateTargetId = "Movies"
+                }))
 {
-
+    @Html.TextBox("SearchString")
+    <input type="submit" value="Search" />
+    @Html.ActionLink("Reset", "Index", "Movies")
 }
 
     @Html.ActionLink("Create New", "Create")
