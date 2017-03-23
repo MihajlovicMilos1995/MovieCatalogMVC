@@ -12,10 +12,7 @@
         Title: @Html.TextBox("SearchString") <br />
     </p>
 
-    <p>
-        <input type="submit" value="Search" />
-        @Html.ActionLink("Reset", "Index", "Movies")
-    </p>
+   
 
 </form>
 @using (Ajax.BeginForm(
@@ -28,7 +25,10 @@
 {
 
 }
-
+<p>
+    <input type="submit" value="Search" />
+    @Html.ActionLink("Reset", "Index", "Movies")
+</p>
     @Html.ActionLink("Create New", "Create")
 @*@using (Html.BeginForm())
 {
