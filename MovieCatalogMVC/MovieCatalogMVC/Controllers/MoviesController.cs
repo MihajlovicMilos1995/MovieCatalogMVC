@@ -139,7 +139,7 @@ namespace MovieCatalogMVC.Controllers
             }
 
 
-        ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "GenreDesc" : "Genre";
             ViewBag.DirectorSortParm = sortOrder == "Director" ? "DirectorDesc" : "Director";
